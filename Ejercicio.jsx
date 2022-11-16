@@ -8,7 +8,18 @@ export const Clock = () => {
     const apellidos = useState('San José');
     
     useEffect(() => {
-              const timerID = setInterval (() => this.tick(), 1000);
+                const timerID = setInterval (() => tick(), 1000);
+              
+                tick(){
+                    setState((prevState) => {
+                    let edad = prevState.edad +1;
+                     return {
+                        ...prevState,
+                        fecha: new Date(),
+                        edad
+                     }
+                    });
+                }
               
               return () => {
                     clearInterval (this.timerID);    
